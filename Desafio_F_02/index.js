@@ -1,35 +1,40 @@
-//Calculadora de Partidas Rankeadas || Desafio DIO Felipão 
+function calcularNivelHeroi(quantVitorias, quantDerrotas) {
+    let saldoVic = quantVitorias - quantDerrotas;
+    let nivel = "";
 
-let quantVitorias = 0
-let quantDerrotas = 0
-let saldoVic = 0
-let nivel = 0
+    switch (true) {
+        case (quantVitorias < 10):
+            nivel = "ferro";
+            break;
+        case (quantVitorias <= 21):
+            nivel = "bronze";
+            break;
+        case (quantVitorias <= 51):
+            nivel = "prata";
+            break;
+        case (quantVitorias <= 80):
+            nivel = "ouro";
+            break;
+        case (quantVitorias <= 90):
+            nivel = "diamante";
+            break;
+        case (quantVitorias <= 100):
+            nivel = "lendário";
+            break;
+        case (quantVitorias >= 101):
+            nivel = "imortal";
+            break;
+        default:
+            nivel = "ferro"; // Nível padrão caso nenhuma condição seja atendida
+    }
 
-console.log("O herói tem um saldo de " + saldoVic + "e está no nível de " + nivel +)
-
-switch (true){
-    case quantVitorias < 10:
-        nivel = "ferro"
-        break; 
-    case quantVitorias <= 21:
-        nivel = "bronze"
-        break;
-    case quantVitorias <= 51:
-        nivel = "prata"
-        break; 
-    case quantVitorias <= 80:
-        nivel = "ouro"
-        break;
-    case quantVitorias <= 90:
-        nivel = "diamante"
-        break; 
-    case quantVitorias <= 100: 
-        nivel = "lendário"
-        break;
-    case quantVitorias <=101:
-        nivel = "imortal"
-        break; 
-
+    return { saldoVic, nivel };
 }
 
-return saldoVic; 
+const quantVitorias = 48;
+const quantDerrotas = 7;
+
+const resultado = calcularNivelHeroi(quantVitorias, quantDerrotas);
+console.log("O herói tem um saldo de " + resultado['saldoVic'] + " e está no nível de " + resultado['nivel']);
+
+module.exports = calcularNivelHeroi;
